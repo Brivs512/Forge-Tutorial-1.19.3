@@ -65,6 +65,7 @@ public class TutorialMod {
             event.accept(ModBlocks.TIN_ORE);
 
 
+
         }
     }
 

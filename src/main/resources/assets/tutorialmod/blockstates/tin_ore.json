@@ -1,3 +1,5 @@
 {
-  "parent": "tutorialmod:block/tin_ore"
+  "variants": {
+    "": {"model": "tutorialmod:block/tin_ore"}
+  }
 }

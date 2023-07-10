@@ -1,13 +1,17 @@
 package net.TravisC.tutorialmod.block;
 
 import net.TravisC.tutorialmod.TutorialMod;
+import net.TravisC.tutorialmod.block.custom.ModFlamableRotatedPillarBlock;
 import net.TravisC.tutorialmod.item.ModItems;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -35,6 +39,62 @@ public class ModBlocks {
     public static final RegistryObject<Block> TIN_ORE = registerBlock("tin_ore",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(4f).requiresCorrectToolForDrops()));
+
+
+    public static final RegistryObject<Block> EBONY_LOG = registerBlock("ebony_log",
+            () -> new ModFlamableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)
+                    .strength(4f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> EBONY_WOOD = registerBlock("ebony_wood",
+            () -> new ModFlamableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)
+                    .strength(4f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> STRIPPED_EBONY_LOG = registerBlock("stripped_ebony_log",
+            () -> new ModFlamableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)
+                    .strength(4f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> STRIPPED_EBONY_WOOD = registerBlock("stripped_ebony_wood",
+            () -> new ModFlamableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)
+                    .strength(4f).requiresCorrectToolForDrops()));
+
+
+    public static final RegistryObject<Block> EBONY_PLANKS = registerBlock("ebony_planks",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)
+                    .strength(4f)) {
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+                    return true;
+                }
+
+                @Override
+                public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+                    return 5;
+                }
+
+                @Override
+                public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+                    return 20;
+                }
+            });
+    public static final RegistryObject<Block> EBONY_LEAVES = registerBlock("ebony_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)) {
+
+                @Override
+                public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+                    return true;
+                }
+
+                @Override
+                public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+                    return 30;
+                }
+
+                @Override
+                public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+                    return 60;
+                }
+            });
+
+
+    public static final RegistryObject<Block> EBONY_SAPLING = registerBlock("ebony_sapling",
+            () -> new SaplingBlock(null, BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

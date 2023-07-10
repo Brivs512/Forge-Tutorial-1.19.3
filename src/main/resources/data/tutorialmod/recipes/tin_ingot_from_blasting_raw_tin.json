@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blaslting",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "tin_ingot",
+  "ingredient": {
+    "item": "tutorialmod:raw_tin"
+  },
+  "result": "tutorialmod:tin_ingot"
+}
