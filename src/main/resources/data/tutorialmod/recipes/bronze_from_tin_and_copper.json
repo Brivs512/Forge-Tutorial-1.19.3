@@ -1,0 +1,17 @@
+{
+  "type": "tutorialmod:crucible",
+  "ingredients": [
+    {
+      "item": "tutorialmod:tin_ingot"
+    },
+    {
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "item": "minecraft:coal"
+    }
+  ],
+  "output": {
+    "item": "tutorialmod:bronze_ingot"
+  }
+}
